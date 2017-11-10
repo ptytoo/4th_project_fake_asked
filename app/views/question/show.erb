@@ -1,0 +1,4 @@
+<h1>질문 내용</h1>
+작성자 : <% if @hidden == false %> 
+        <%= @name %> <% else%> <%= '익명'%> <%end%><br>
+내용 : <%= @content%>

@@ -1,0 +1,31 @@
+<h1>질문 등록</h1>
+<form action = '/question/show'>
+    <!--
+    작성자 이름 : <input type = 'text' name = 'name' id="name">-->
+    <select name="u_name" id="anonymous">
+    <option value="<%= session[:user_email]%>">공개</option>
+    <option value="private">익명</option>
+    </select><br>
+    내용 : <input type = 'text' name = 'content'><br>
+    <input type = 'submit' value = "고민 등록">
+</form>
+<div class="card">
+    <% @questions.each do |question| %>
+    <div class="card-body">
+    작성자 : <% if question.hidden == false %> 
+        <%= question.name %> <% else%> <%= '익명'%> <%end%><br>
+    질문 : <%= question.content %> 
+    </div>
+    <% end %>
+</div>
+<!--
+<script>
+    $(document).ready(function() {
+        var anony = $('#anonymous');
+        var content = $('#name');
+        anony.on('change', function() {
+            content.toggle();
+        })
+    })
+</script>
+-->
